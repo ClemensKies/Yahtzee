@@ -31,8 +31,6 @@ class Player{
 	int uitkomst_steen3;
 	int uitkomst_steen4;
 	int uitkomst_steen5;
-	int[] aantalDobbelstenen = {1,2,3,4,5,6};
-	int ronde;
 	
 	public void naaminvoeren(){
 		System.out.println("Please enter your name: ");
@@ -109,41 +107,46 @@ class Player{
 		System.out.println();
 		String line = 	"Wil je alle dobbelstenen behouden, of wil je (enkele opnieuw gooien\n" +
 						"Je kan kiezen uit de volgende getallen. getal '1' gooit dobbelsteen 1 opnieuw\n" +
-						"Getal '2' is dobbelsteen laten rollen, etc. Getal 6 is om alle dobbelstemem opnieuw te doen";
-		System.out.println(line);	
-		for(int i = 0;  i < aantalDobbelstenen.length; i++) {
-			Scanner user_input = new Scanner(System.in);
-			int getal = user_input.nextInt();
-			if (getal <= aantalDobbelstenen[i]) {
-				if(getal ==  aantalDobbelstenen[i]) {
-					if(getal == 1) {
-						dobbelwerp();
-						break;
-					}else if(getal ==2) {
-						dobbelwerp2();
-						break;
-					}else if(getal == 3) {
-						dobbelwerp3();
-						break;
-					}else if (getal == 4) {
-						dobbelwerp4();
-						break;
-					}else if (getal == 5) {
-						dobbelwerp5();
-						break;
-					}else if(getal == 6){
-						dobbelsteengooien();
+						"Getal '2' gooit dobbelsteen 2 opnieuw, etc. Getal 6 is om alle dobbelstemem opnieuw te doen\n" +
+						"Wanneer je de worp wilt behouden typ je getal 7 in";
+		System.out.println(line);
+		int ronde = 0;
+		while ( ronde < 2) {
+				Scanner user_input = new Scanner(System.in);
+				int getal = user_input.nextInt();
+						if(getal == 1) {
+							ronde++;
+							dobbelwerp();
+							
+						}else if(getal ==2) {
+							ronde++;
+							dobbelwerp2();
+			
+						}else if(getal == 3) {
+							ronde++;
+							dobbelwerp3();
+							
+						}else if (getal == 4) {
+							ronde++;
+							dobbelwerp4();
+							
+						}else if (getal == 5) {
+							ronde++;
+							dobbelwerp5();
+						}else if(getal == 6){
+							ronde++;
+							dobbelsteengooien();
+						}else {
+							System.out.print("Next player");
+							break;
+						}
+					if(ronde ==2) {
+						System.out.println("Next player");
 						break;
 					}
-				}
+					
+					}
+			
+				}	
 		
-			}else{
-				System.out.println("Please choose another number");
-				opnieuwgooien();
-		}
-		}
 }
-}
-
-
-
